@@ -1,0 +1,27 @@
+{% comment %}{% extends 'items/index2.html' %}{% endcomment %}
+
+{% block bannerblock %}
+    {% load staticfiles %}
+    <div class="banner">
+        {% for item in featured_list %}
+            {% if item.name == 'Apple Iphone 6' %}
+                <div class="banner_background" style="background-image:{% static 'items/images/banner_background.jpg' %}"></div>
+                <div class="container fill_height">
+                    <div class="row fill_height">
+                        <div class="banner_product_image"><img src='{% static "items/images/banner_product.png" %}' alt=""></div>
+                        <div class="col-lg-5 offset-lg-4 fill_height">
+                            <div class="banner_content">
+                                <h1 class="banner_text">new era of smartphones</h1>
+                                <div class="banner_price"><span>{{ item.price }}</span>{{ item.discountprice }}</div>
+                                <div class="banner_product_name">{{ item.name }}</div>
+                                <div class="button banner_button"><a href="#">Shop Now</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+{% endblock %}
+

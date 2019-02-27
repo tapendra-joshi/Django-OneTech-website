@@ -1,0 +1,40 @@
+<html>
+{% load staticfiles %}
+<head>
+    <title>cart</title>
+    <link rel="stylesheet" type="text/css" href='{% static "items/bootstrap/bootstrap.min.css" %}'>
+    <link rel="stylesheet" type="text/css" href='{% static "items/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" %}'>
+    <link rel="stylesheet" type="text/css" href='{% static "items/plugins/OwlCarousel2-2.2.1/owl.carousel.css" %}'>
+    <link rel="stylesheet" type="text/css" href='{% static "items/plugins/OwlCarousel2-2.2.1/owl.theme.default.css" %}'>
+    <link rel="stylesheet" type="text/css" href='{% static "items/plugins/OwlCarousel2-2.2.1/animate.css" %}'>
+    <link rel="stylesheet" type="text/css" href='{% static "items/plugins/slick-1.8.0/slick.css" %}'>
+    <link rel="stylesheet" type="text/css" href='{% static "items/main_styles.css" %}'>
+    <link rel="stylesheet" type="text/css" href='{% static "items/responsive.css" %}'>
+</head>
+<body>
+
+<div class="col-sm-8-offset-2">
+{% if empty %}
+<h1 style="text-align: center">{{ empty_message }}</h1>
+{% else %}
+    <table class='table' style="border-collapse: collapse;">
+    <thead>
+    <th>Item</th>
+    <th>Price</th>
+    <th>Qty</th>
+    </thead>
+    <tfoot>
+    <tr>
+        <td></td>
+        <td>Total: {{ cart.total }}</td>
+    </tr>
+    </tfoot>
+        {% for item in cart.cartitem_set.all %}
+            <tr><td>{{ item.item.name }}</td><td>{{ item.item.discountprice }}</td><td>{{ item.quantity }}</td><td><a href='#' >Remove</a></td></tr>
+        {% endfor %}
+    </table>
+{% endif %}
+</div>
+</body>
+</html>
+

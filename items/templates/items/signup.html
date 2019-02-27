@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {%if messages %}
+        {%for message in messages%}
+            <h1>{{message}}</h1>
+        {%endfor%}
+    {%endif%}
+    <h2>SignUp Form</h2>
+    <form method="POST">{%csrf_token%}
+        Username<input type="text" name="un"><br>
+        Email<input type="email" name="em"><br>
+        Password<input type="password" name="ps"><br>
+        <input type="submit">
+    </form>
+</body>
+</html>

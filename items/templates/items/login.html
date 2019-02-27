@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <form  method="POST" >{% csrf_token %}<!--Cross Site Request Forgery-->
+        <label>username</label>
+        <input type="text" name="un" placeholder="enter your username here">
+        <br>
+        <label>password</label>
+        <input type="password" name="ps" placeholder="enter password" >
+        <br>
+        {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+        {% endif %}
+
+        <button type="submit">SignIn</button>
+    </form>
+
+</body>
+</html>
